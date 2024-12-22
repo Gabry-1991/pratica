@@ -1,6 +1,9 @@
 <template>
   <div class="container--divider">
-    <h2 class="title">{{ title }}</h2>
+    <div class="container--title">
+      <h2 class="title">{{ title }}</h2>
+      <i class="fa-solid fa-chevron-down icon" />
+    </div>
 
     <div class="container--content">
       <slot name="content"> </slot>
@@ -46,11 +49,46 @@ export default {
   gap: 1rem;
 }
 
+.container--title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .title {
   font-size: v-bind(titleSize);
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.icon {
+  display: none;
+}
+
+@media (max-width: 1030px) {
+  .container--divider {
+    padding: 0 16px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .container--content {
+    flex-wrap: wrap;
+    gap: 0.75rem 0.5rem;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .icon {
+    display: block;
+    font-size: 19px;
+  }
 }
 </style>

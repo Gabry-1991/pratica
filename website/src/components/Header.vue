@@ -237,6 +237,10 @@ export default {
     display: block;
   }
 
+  .menu--button {
+    width: 52px;
+  }
+
   .accedi {
     display: none;
   }

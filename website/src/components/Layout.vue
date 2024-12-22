@@ -87,4 +87,10 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 1030px) {
+  .tab {
+    background: #fff;
+  }
+}
+</style>
