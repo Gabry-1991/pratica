@@ -17,6 +17,10 @@ export default {
   display: flex;
 }
 
+.d-none {
+  display: none !important;
+}
+
 .align-items-center {
   align-items: center;
 }

@@ -1,7 +1,26 @@
 <template>
-  <div class="container--article">
+  <div class="container--article" :class="{ 'container--article-text-black': mobileBgWhite }">
+    <div v-if="detachedBackground" class="detached-background">
+      <Label padding="16px">
+        <template #content>
+          <i class="fa-solid fa-image icon-big" />
+        </template>
+      </Label>
+
+      <Label padding="13px" no-shadow>
+        <template #content>
+          <i class="fa-solid fa-play icon" />
+        </template>
+      </Label>
+    </div>
+
     <div>
-      <Label :background="labelBackground" padding="4px 8px" class="label">
+      <Label
+        :background="labelBackground"
+        :background-mobile="labelBackgroundMobile"
+        padding="4px 8px"
+        class="label"
+      >
         <template #content>
           <span>{{ label }}</span>
         </template>
@@ -10,7 +29,7 @@
 
     <div v-if="soundWave" class="container--soundwave" :class="{ 'soundwave-long': soundWaveLong }">
       <i class="fa-solid fa-pause icon" />
-      <img :src="soundWave" alt="sound wave" />
+      <img :src="soundWave" alt="sound wave" class="soundwave" />
       <span>-03:34</span>
     </div>
 
@@ -18,16 +37,24 @@
 
     <div class="container--author" :class="{ 'author-vertical': authorVertical }">
       <div class="container--image">
-        <img height="48" width="48" :src="authorImg" alt="author image" />
+        <img :src="authorImg" alt="author image" class="image" />
+        <img
+          :src="authorImgMobile ? authorImgMobile : authorImg"
+          alt="author image"
+          class="image-mobile"
+        />
       </div>
 
       <div class="container--details" :class="{ 'details-vertical': authorVertical }">
         <div class="author-name">Di {{ authorName }}</div>
+        <div class="author-name-mobile">
+          Di {{ authorNameMobile ? authorNameMobile : authorName }}
+        </div>
         <div class="date">{{ date }}</div>
       </div>
     </div>
 
-    <div v-if="!hideArrow">
+    <div v-if="!hideArrow" class="container--button">
       <button class="button">
         <i class="fa-solid fa-arrow-right icon" />
       </button>
@@ -52,6 +79,10 @@ export default {
       type: String,
       default: '#fff',
     },
+    labelBackgroundMobile: {
+      type: String,
+      default: '#fff',
+    },
     title: {
       type: String,
       required: true,
@@ -60,17 +91,37 @@ export default {
       type: String,
       required: true,
     },
-    titleLineHeight: {
+    titleSizeMobile: {
       type: String,
       required: true,
+    },
+    titleLineHeight: {
+      type: String,
+      default: '',
+    },
+    titleLineHeightMobile: {
+      type: String,
+      default: '',
+    },
+    titleWidthMobile: {
+      type: String,
+      default: '100%',
     },
     authorImg: {
       type: String,
       required: true,
     },
+    authorImgMobile: {
+      type: String,
+      default: '',
+    },
     authorName: {
       type: String,
       required: true,
+    },
+    authorNameMobile: {
+      type: String,
+      default: '',
     },
     date: {
       type: String,
@@ -89,6 +140,14 @@ export default {
       default: '',
     },
     soundWaveLong: {
+      type: Boolean,
+      default: false,
+    },
+    detachedBackground: {
+      type: Boolean,
+      default: false,
+    },
+    mobileBgWhite: {
       type: Boolean,
       default: false,
     },
@@ -123,6 +182,15 @@ export default {
   overflow: hidden;
 }
 
+.image {
+  height: 48px;
+  width: 48px;
+}
+
+.image-mobile {
+  display: none;
+}
+
 .container--details {
   height: 100%;
   padding: 4px 0;
@@ -138,6 +206,7 @@ export default {
   padding: 12px 16px;
   border-radius: 8px;
   width: 100%;
+  height: 64px;
 
   display: flex;
   align-items: center;
@@ -146,6 +215,11 @@ export default {
 
 .soundwave-long {
   width: 115%;
+}
+
+.soundwave {
+  height: 40px;
+  width: 407px;
 }
 
 .label {
@@ -163,6 +237,10 @@ export default {
 
 .author-name {
   font-size: 14px;
+}
+
+.author-name-mobile {
+  display: none;
 }
 
 .date {
@@ -188,5 +266,113 @@ export default {
 
 .icon {
   font-size: 20px;
+}
+
+.detached-background {
+  height: 201px;
+  width: 100%;
+  border: 1px solid #000;
+  margin-bottom: 0.8rem;
+  display: none;
+
+  background-image: url('backgrounds/ghiacciai.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 1350px) {
+  .soundwave {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .soundwave {
+    width: 180px;
+  }
+}
+
+@media (max-width: 800px) {
+  .title {
+    font-size: v-bind(titleSizeMobile);
+    line-height: v-bind(titleLineHeightMobile);
+    width: v-bind(titleWidthMobile);
+  }
+
+  .container--article-text-black {
+    color: #000;
+  }
+
+  .container--image {
+    height: 32px;
+    width: 32px;
+  }
+
+  .container--author {
+    height: 40px;
+
+    align-items: center;
+  }
+
+  .image {
+    display: none;
+  }
+
+  .image-mobile {
+    display: block;
+    height: 32px;
+    width: 32px;
+  }
+
+  .author-name {
+    display: none;
+  }
+
+  .author-name-mobile {
+    display: block;
+    font-size: 14px;
+  }
+
+  .icon-big {
+    font-size: 22px;
+  }
+
+  .icon {
+    font-size: 18px;
+  }
+
+  .detached-background {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .author-vertical {
+    height: 48px;
+    flex-direction: row;
+  }
+
+  .details-vertical {
+    height: 100%;
+  }
+
+  .container--button {
+    display: none;
+  }
+
+  .container--soundwave {
+    border: 1px solid #ccc;
+  }
+
+  .soundwave {
+    width: 231px;
+  }
+
+  .soundwave-long {
+    width: 100%;
+  }
 }
 </style>

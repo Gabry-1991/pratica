@@ -1,8 +1,13 @@
 <template>
   <div class="container--divider">
     <div class="container--title">
-      <h2 class="title">{{ title }}</h2>
-      <i class="fa-solid fa-chevron-down icon" />
+      <h2 class="title" :class="{ 'title-md': title === 'Il tuo supporto è fondamentale' }">
+        {{ title }}
+      </h2>
+      <i
+        class="fa-solid fa-chevron-down icon"
+        :class="{ 'd-none': title === 'Il tuo supporto è fondamentale' }"
+      />
     </div>
 
     <div class="container--content">
@@ -78,12 +83,19 @@ export default {
   }
 
   .container--content {
+    padding-bottom: 24px;
+
     flex-wrap: wrap;
     gap: 0.75rem 0.5rem;
   }
 
   .title {
     font-size: 28px;
+  }
+
+  .title-md {
+    font-size: 24px;
+    line-height: 32px;
   }
 
   .icon {

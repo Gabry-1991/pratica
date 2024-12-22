@@ -20,9 +20,9 @@
 
   <DividerSection background="#f4f1de" title="Il tuo supporto è fondamentale" title-size="40px">
     <template #content>
-      <div>
+      <div class="flex">
         <span :style="{ 'font-size': '14px' }">Dai il tuo contributo</span>&nbsp;
-        <i class="fa-solid fa-arrow-right" />
+        <i class="fa-solid fa-arrow-right icon" />
       </div>
     </template>
   </DividerSection>
@@ -88,9 +88,17 @@ export default {
 </script>
 
 <style scoped>
+.icon {
+  font-size: 16px;
+}
+
 @media (max-width: 1030px) {
   .tab {
     background: #fff;
+  }
+
+  .icon {
+    font-size: 19px;
   }
 }
 </style>

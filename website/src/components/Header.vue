@@ -45,7 +45,7 @@
 
         <Label padding="6px">
           <template #content>
-            <i class="fa-solid fa-mountain icon" />
+            <i class="fa-solid fa-image icon" />
           </template>
         </Label>
       </div>
