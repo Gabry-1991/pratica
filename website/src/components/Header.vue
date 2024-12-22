@@ -12,55 +12,75 @@
       </div>
     </div>
 
+    <Divider />
+
     <div class="container--menu">
-      <div class="menu">
-        <div class="menu--button">
-          <div class="menu--icon">
-            <i class="fa-solid fa-bars" />
-          </div>
-        </div>
-        <div class="menu--button">
-          <div class="menu--icon">
-            <i class="fa-solid fa-magnifying-glass" />
-          </div>
+      <div class="menu--button">
+        <div class="menu--icon">
+          <i class="fa-solid fa-bars" />
         </div>
       </div>
-      <div class="tabs">
-        <div v-for="(tab, idx) of tabs" :key="idx" class="tab">
-          {{ tab }}
+
+      <div class="menu--button">
+        <div class="menu--icon">
+          <i class="fa-solid fa-magnifying-glass" />
         </div>
       </div>
     </div>
+
+    <Divider />
+
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="container--tabs">
+        <div v-for="(tab, idx) of themes" :key="idx" class="tab">
+          {{ tab }}
+        </div>
+      </div>
+
+      <div class="container--toggle">
+        <span class="letters">Aa</span>
+
+        <Label padding="6px">
+          <template #content>
+            <i class="fa-solid fa-mountain icon" />
+          </template>
+        </Label>
+      </div>
+    </div>
   </div>
+
+  <Divider />
 </template>
 
 <script>
+import Divider from './Divider.vue'
+import Label from './Label.vue'
+
 export default {
-  data() {
-    return {
-      tabs: [
-        'Tutti i temi',
-        'Ambiente',
-        'Economia',
-        'Mondo',
-        'Non profit',
-        'Politica',
-        'Società',
-        'Welfare',
-      ],
-    }
+  components: {
+    Divider,
+    Label,
+  },
+
+  props: {
+    themes: {
+      type: Array,
+      required: true,
+    },
   },
 }
 </script>
 
 <style scoped lang="scss">
 .container--general {
-  padding: 0 40px;
-  border: 1px solid red;
+  width: 100%;
+  background: #fff;
 }
 .container--breadcrumbs {
+  font-family: 'Anybody', serif;
   height: 48px;
   font-size: 14px;
+  padding: 0 40px;
 
   display: flex;
   align-items: center;
@@ -68,9 +88,12 @@ export default {
 }
 
 .container--menu {
-  height: 192px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  height: 96px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .breadcrumbs {
@@ -81,15 +104,11 @@ export default {
 .accedi {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
 .menu {
   height: 50%;
-  border-bottom: 1px solid #000;
-
-  display: flex;
-  justify-content: space-between;
 }
 
 .menu--button {
@@ -113,14 +132,46 @@ export default {
   color: var(--primary-red);
 }
 
-.tabs {
-  height: 50%;
+.icon {
+  font-size: 19px;
+}
+
+.container--tabs {
+  font-family: 'Raleway', serif;
+  font-size: 24px;
+  font-weight: 700;
+
+  height: 96px;
+  padding: 0 40px;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.8rem;
 }
 
 .tab {
+  height: 100%;
+  border-radius: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:first-of-type {
+    box-shadow: 0 -9px 0 var(--primary-red) inset;
+  }
+}
+
+.container--toggle {
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.letters {
+  font-size: 20px;
 }
 </style>
