@@ -1,5 +1,8 @@
 <template>
-  <div :class="{ 'divider--horizontal': !vertical, 'divider--vertical': vertical }"></div>
+  <div
+    class="divider"
+    :class="{ 'divider--horizontal': !vertical, 'divider--vertical': vertical }"
+  ></div>
 </template>
 
 <script>
@@ -11,6 +14,9 @@ export default {
 </script>
 
 <style scoped>
+.divider {
+  background: #000;
+}
 .divider--horizontal {
   height: 1px;
   width: 100%;
