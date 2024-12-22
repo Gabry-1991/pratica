@@ -3,24 +3,26 @@
     <h2 class="title">Tutti i temi</h2>
 
     <div class="container--buttons">
-      <Button
+      <Label
         v-for="(tab, idx) of themes.slice(1)"
         :key="idx"
         :background="getBackground(idx)"
         class="tab"
       >
-        <template #content>{{ tab }}</template>
-      </Button>
+        <template #content>
+          <span>{{ tab }}</span>
+        </template>
+      </Label>
     </div>
   </div>
 </template>
 
 <script>
-import Button from './Button.vue'
+import Label from './Label.vue'
 
 export default {
   components: {
-    Button,
+    Label,
   },
 
   props: {
@@ -34,11 +36,11 @@ export default {
     getBackground(idx) {
       switch (idx) {
         case 0:
-          return '#e2f1e8'
+          return 'var(--label-green)'
         case 2:
-          return '#f1dada'
+          return 'var(--label-red)'
         case 4:
-          return '#f1f1e2'
+          return 'var(--label-sand)'
 
         default:
           return '#fff'

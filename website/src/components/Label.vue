@@ -28,6 +28,7 @@ export default {
 
   background: v-bind(background);
   padding: v-bind(padding);
+  width: fit-content;
 
   border: 1px solid #000;
   border-radius: 4px;

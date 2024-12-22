@@ -1,4 +1,19 @@
 :root {
   --primary-red: #e63036;
   --grey: #f4f4f4;
+  --label-green: #e2f1e8;
+  --label-red: #f1dada;
+  --label-sand: #f1f1e2;
+  --label-blue: #e2f0f1;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
