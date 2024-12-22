@@ -1,9 +1,12 @@
 <template>
   <div class="container--general">
+    <div class="container--empty"></div>
+
     <div class="container--breadcrumbs">
       <div class="breadcrumbs">
-        <span>Contribuisci</span>
-        <span>Abbonati</span>
+        <span class="breadcrumb">Contribuisci</span>
+        <Divider vertical class="breadcrumb-divider" />
+        <span class="breadcrumb">Abbonati</span>
       </div>
 
       <div class="accedi">
@@ -30,7 +33,7 @@
 
     <Divider />
 
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="container--all-themes">
       <div class="container--tabs">
         <div v-for="(tab, idx) of themes" :key="idx" class="tab">
           {{ tab }}
@@ -96,9 +99,32 @@ export default {
   justify-content: space-between;
 }
 
-.breadcrumbs {
+.container--all-themes {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container--empty {
+  display: none;
+  height: 44px;
+  border-bottom: 1px solid #000;
+}
+
+.breadcrumbs {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
   gap: 1.5rem;
+}
+
+.breadcrumb {
+  font-size: 14px;
+}
+
+.breadcrumb-divider {
+  display: none;
 }
 
 .accedi {
@@ -152,14 +178,22 @@ export default {
 
 .tab {
   height: 100%;
-  border-radius: 2px;
+  position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &:first-of-type {
-    box-shadow: 0 -9px 0 var(--primary-red) inset;
+  &:first-of-type::after {
+    content: '';
+    height: 9px;
+    width: 100%;
+    border-radius: 2px;
+    background: var(--primary-red);
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
   }
 }
 
@@ -173,5 +207,38 @@ export default {
 
 .letters {
   font-size: 20px;
+}
+
+@media (max-width: 1150px) {
+  .container--toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 1030px) {
+  .container--tabs {
+    display: none;
+  }
+
+  .container--empty {
+    display: block;
+  }
+
+  .container--menu {
+    height: 52px;
+  }
+
+  .breadcrumbs {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .breadcrumb-divider {
+    display: block;
+  }
+
+  .accedi {
+    display: none;
+  }
 }
 </style>
