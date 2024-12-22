@@ -1,5 +1,5 @@
 <template>
-  <div class="container--main-articles">
+  <div class="container--secondary-articles">
     <div class="container--article-1">
       <div class="article article-1">
         <Article
@@ -151,8 +151,8 @@ export default {
 </script>
 
 <style scoped>
-.container--main-articles {
-  height: 436px;
+.container--secondary-articles {
+  height: calc(436px + 482px);
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);

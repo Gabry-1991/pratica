@@ -78,7 +78,7 @@ export default {
     },
     authorVertical: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     hideArrow: {
       type: Boolean,

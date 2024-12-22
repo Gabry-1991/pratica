@@ -30,6 +30,8 @@
   <SecondaryArticles />
 
   <Bookmark />
+
+  <Blog />
 </template>
 
 <script>
@@ -39,6 +41,7 @@ import MainArticles from './MainArticles.vue'
 import SecondaryArticles from './SecondaryArticles.vue'
 import Bookmark from './Bookmark.vue'
 import Label from './Label.vue'
+import Blog from './Blog.vue'
 
 export default {
   components: {
@@ -48,6 +51,7 @@ export default {
     SecondaryArticles,
     Bookmark,
     Label,
+    Blog,
   },
 
   data() {
