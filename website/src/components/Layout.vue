@@ -1,21 +1,53 @@
 <template>
   <Header :themes="themes" />
 
-  <AllThemes :themes="themes" />
+  <DividerSection title="Tutti i temi">
+    <template #content>
+      <Label
+        v-for="(tab, idx) of themes.slice(1)"
+        :key="idx"
+        :background="getBackground(idx)"
+        class="tab"
+      >
+        <template #content>
+          <span>{{ tab }}</span>
+        </template>
+      </Label>
+    </template>
+  </DividerSection>
 
   <MainArticles />
+
+  <DividerSection background="#f4f1de" title="Il tuo supporto è fondamentale" title-size="40px">
+    <template #content>
+      <div>
+        <span :style="{ 'font-size': '14px' }">Dai il tuo contributo</span>&nbsp;
+        <i class="fa-solid fa-arrow-right" />
+      </div>
+    </template>
+  </DividerSection>
+
+  <SecondaryArticles />
+
+  <Bookmark />
 </template>
 
 <script>
 import Header from './Header.vue'
-import AllThemes from './AllThemes.vue'
+import DividerSection from './DividerSection.vue'
 import MainArticles from './MainArticles.vue'
+import SecondaryArticles from './SecondaryArticles.vue'
+import Bookmark from './Bookmark.vue'
+import Label from './Label.vue'
 
 export default {
   components: {
     Header,
-    AllThemes,
+    DividerSection,
     MainArticles,
+    SecondaryArticles,
+    Bookmark,
+    Label,
   },
 
   data() {
@@ -31,6 +63,22 @@ export default {
         'Welfare',
       ],
     }
+  },
+
+  methods: {
+    getBackground(idx) {
+      switch (idx) {
+        case 0:
+          return 'var(--label-green)'
+        case 2:
+          return 'var(--label-red)'
+        case 4:
+          return 'var(--label-sand)'
+
+        default:
+          return '#fff'
+      }
+    },
   },
 }
 </script>

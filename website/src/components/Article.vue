@@ -8,7 +8,7 @@
       </Label>
     </div>
 
-    <div v-if="soundWave" class="container--soundwave">
+    <div v-if="soundWave" class="container--soundwave" :class="{ 'soundwave-long': soundWaveLong }">
       <i class="fa-solid fa-pause icon" />
       <img :src="soundWave" alt="sound wave" />
       <span>-03:34</span>
@@ -28,7 +28,9 @@
     </div>
 
     <div v-if="!hideArrow">
-      <i class="fa-solid fa-arrow-right" />
+      <button class="button">
+        <i class="fa-solid fa-arrow-right icon" />
+      </button>
     </div>
   </div>
 </template>
@@ -86,18 +88,23 @@ export default {
       type: String,
       default: '',
     },
+    soundWaveLong: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
 
 <style scoped>
 .container--article {
+  height: 100%;
   color: #fff;
   font-family: 'Anybody', serif;
 
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  justify-content: space-between;
 }
 
 .container--author {
@@ -130,11 +137,15 @@ export default {
   background: #fff;
   padding: 12px 16px;
   border-radius: 8px;
-  width: 115%;
+  width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.soundwave-long {
+  width: 115%;
 }
 
 .label {
@@ -167,7 +178,15 @@ export default {
   height: 48px;
 }
 
+.button {
+  color: #fff;
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
 .icon {
-  /* font-size: 19px; */
+  font-size: 20px;
 }
 </style>

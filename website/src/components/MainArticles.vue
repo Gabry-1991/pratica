@@ -42,6 +42,7 @@
           :date="article3.date"
           :sound-wave="article3.soundWave"
           author-vertical
+          sound-wave-long
         />
       </div>
     </div>
@@ -171,18 +172,24 @@ export default {
 }
 
 .article-1 {
+  height: 60%;
   width: 57%;
+  padding: 44px 40px;
 }
 
 .article-2 {
+  height: 47.5%;
   width: 92%;
+  padding: 44px 40px;
 }
 
 .article-3 {
+  height: 100%;
   width: 90%;
 }
 
 .article-4 {
+  height: 100%;
   width: 90%;
 }
 </style>

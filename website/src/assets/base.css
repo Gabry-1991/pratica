@@ -5,6 +5,7 @@
   --label-red: #f1dada;
   --label-sand: #f1f1e2;
   --label-blue: #e2f0f1;
+  --label-purple: #f0e2f1;
 }
 
 html {
@@ -16,4 +17,8 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+body {
+  background: var(--grey);
 }
