@@ -1,7 +1,8 @@
 <template>
   <div class="container--bookmark">
     <div class="container--symbol">
-      <img height="40" width="50" src="/symbol.png" alt="apici" />
+      <img height="40" width="50" src="/symbol.png" alt="apici" class="symbol" />
+      <img height="27" width="34" src="/symbol-mobile.png" alt="apici" class="symbol-mobile" />
     </div>
 
     <div class="container--text">
@@ -38,6 +39,14 @@
   justify-content: center;
 }
 
+.symbol {
+  display: block;
+}
+
+.symbol-mobile {
+  display: none;
+}
+
 .container--text {
   display: flex;
   flex-direction: column;
@@ -55,5 +64,35 @@
   font-size: 16px;
   font-weight: 600;
   font-style: italic;
+}
+
+@media (max-width: 1030px) {
+  .container--bookmark {
+    height: 154px;
+    color: #000;
+    background: transparent;
+    padding: 0 16px;
+  }
+
+  .container--symbol {
+    width: 70px;
+    transform: translateY(-170%);
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .symbol {
+    display: none;
+  }
+
+  .symbol-mobile {
+    display: block;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 </style>

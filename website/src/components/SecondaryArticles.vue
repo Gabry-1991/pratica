@@ -273,7 +273,7 @@ export default {
 
 @media (max-width: 800px) {
   .container--secondary-articles {
-    height: fit-content;
+    height: auto;
     grid-template-columns: 100%;
     grid-template-rows: 164px 188px 188px calc(268px + 614px);
   }
