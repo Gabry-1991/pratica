@@ -108,7 +108,7 @@ export default {
     },
     titleSizeMobile: {
       type: String,
-      required: true,
+      default: '',
     },
     titleLineHeight: {
       type: String,

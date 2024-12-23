@@ -4,7 +4,12 @@
       <h3 class="title">Il Blog</h3>
     </div>
 
-    <div v-for="(blog, idx) of blogs" :key="idx" class="container--blogs">
+    <div
+      v-for="(blog, idx) of blogs"
+      :key="idx"
+      class="container--blogs"
+      :class="{ 'last-blog': idx === blogs.length - 1 }"
+    >
       <div class="container--image">
         <img height="84" width="84" :src="blog.img" alt="author image" />
       </div>
@@ -13,6 +18,11 @@
         <div class="blog-title">{{ blog.title }}</div>
         <div class="blog-author">Di {{ blog.author }}</div>
       </div>
+    </div>
+
+    <div class="container--all-blogs">
+      <div class="all-blogs">Tutti i blog</div>
+      <i class="fa-solid fa-arrow-right" />
     </div>
   </div>
 </template>
@@ -104,6 +114,10 @@ export default {
   gap: 0.75rem;
 }
 
+.container--all-blogs {
+  display: none;
+}
+
 .title {
   color: var(--primary-red);
   font-size: 40px;
@@ -116,5 +130,46 @@ export default {
 .blog-author {
   font-size: 14px;
   font-weight: 400;
+}
+
+@media (max-width: 1030px) {
+  .container--blog {
+    height: calc(188px * 3);
+    grid-template-columns: repeat(2, 1fr);
+    background: #000;
+    gap: 1px;
+  }
+
+  .container--title {
+    background: #fff;
+    border: none;
+  }
+
+  .container--blogs {
+    background: #fff;
+    border: none;
+  }
+
+  .container--all-blogs {
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .blog-title {
+    font-size: 16px;
+  }
+
+  .last-blog {
+    display: none;
+  }
 }
 </style>
