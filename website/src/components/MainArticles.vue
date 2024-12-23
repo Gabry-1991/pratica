@@ -33,7 +33,8 @@
           :author-name-mobile="article2.authorNameMobile"
           :date="article2.date"
           author-vertical
-          detached-background
+          detached-background="url(backgrounds/ghiacciai.png)"
+          detached-background-height="201px"
           mobile-bg-white
         />
       </div>
@@ -260,6 +261,7 @@ export default {
 
   .container--article-4 {
     background: #fff;
+    border-bottom: 1px solid #000;
   }
 
   .article-1 {

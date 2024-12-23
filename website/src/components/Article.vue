@@ -1,17 +1,32 @@
 <template>
   <div class="container--article" :class="{ 'container--article-text-black': mobileBgWhite }">
-    <div v-if="detachedBackground" class="detached-background">
-      <Label padding="16px">
+    <div
+      v-if="detachedBackground"
+      class="detached-background"
+      :class="{ centered: detachedBackground === 'url(backgrounds/smile.jpeg)' }"
+    >
+      <Label v-if="detachedBackground === 'url(backgrounds/ghiacciai.png)'" padding="16px">
         <template #content>
           <i class="fa-solid fa-image icon-big" />
         </template>
       </Label>
 
-      <Label padding="13px" no-shadow>
+      <Label
+        v-if="detachedBackground === 'url(backgrounds/ghiacciai.png)'"
+        padding="13px"
+        no-shadow
+      >
         <template #content>
           <i class="fa-solid fa-play icon" />
         </template>
       </Label>
+
+      <div
+        v-if="detachedBackground === 'url(backgrounds/smile.jpeg)'"
+        class="container--detached-title"
+      >
+        <h3 class="detached-title">Intervista a Mariangela Cassano</h3>
+      </div>
     </div>
 
     <div>
@@ -144,8 +159,12 @@ export default {
       default: false,
     },
     detachedBackground: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: '',
+    },
+    detachedBackgroundHeight: {
+      type: String,
+      default: '201px',
     },
     mobileBgWhite: {
       type: Boolean,
@@ -269,13 +288,13 @@ export default {
 }
 
 .detached-background {
-  height: 201px;
+  height: v-bind(detachedBackgroundHeight);
   width: 100%;
   border: 1px solid #000;
   margin-bottom: 0.8rem;
   display: none;
 
-  background-image: url('backgrounds/ghiacciai.png');
+  background-image: v-bind(detachedBackground);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -307,6 +326,11 @@ export default {
   .container--image {
     height: 32px;
     width: 32px;
+  }
+
+  .author-vertical {
+    height: 40px;
+    flex-direction: row;
   }
 
   .container--author {
@@ -342,6 +366,11 @@ export default {
     font-size: 18px;
   }
 
+  .container--detached-title {
+    width: 87.5%;
+    margin-bottom: 1.25rem;
+  }
+
   .detached-background {
     display: flex;
     flex-direction: column;
@@ -350,9 +379,18 @@ export default {
     gap: 1rem;
   }
 
-  .author-vertical {
-    height: 48px;
-    flex-direction: row;
+  .centered {
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .detached-title {
+    color: #fff;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .details-vertical {
