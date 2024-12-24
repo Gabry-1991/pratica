@@ -27,20 +27,18 @@
 
     <div class="container--menu">
       <div class="menu--button">
-        <div class="menu--icon">
+        <button class="menu--icon" @click="toggleMenu">
           <i class="fa-solid fa-bars" />
-        </div>
+        </button>
       </div>
 
       <div class="menu--button">
-        <div>
-          <button class="menu--icon">
-            <i class="fa-solid fa-magnifying-glass" />
-          </button>
-        </div>
+        <button class="menu--icon">
+          <i class="fa-solid fa-magnifying-glass" />
+        </button>
       </div>
 
-      <!-- <Menu /> -->
+      <Menu v-model:dropdown-visible="dropdownVisible" />
     </div>
 
     <Divider />
@@ -83,6 +81,18 @@ export default {
     themes: {
       type: Array,
       required: true,
+    },
+  },
+
+  data() {
+    return {
+      dropdownVisible: false,
+    }
+  },
+
+  methods: {
+    toggleMenu() {
+      this.dropdownVisible = !this.dropdownVisible
     },
   },
 }

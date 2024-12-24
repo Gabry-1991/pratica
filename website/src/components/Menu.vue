@@ -1,5 +1,5 @@
 <template>
-  <div class="container--menu">
+  <div class="container--dropdown" :class="{ 'container--dropdown--visible': dropdownVisible }">
     <div v-for="section of menuSections" class="menu-section">
       <div class="container--text">
         <h3 class="title">{{ section.title }}</h3>
@@ -15,6 +15,13 @@
 
 <script>
 export default {
+  props: {
+    dropdownVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
   data() {
     return {
       menuSections: [
@@ -58,21 +65,36 @@ export default {
 </script>
 
 <style scoped>
-.container--menu {
+.container--dropdown {
+  opacity: 0;
+  pointer-events: none;
+  visibility: none;
+
   height: auto;
+  width: 100.05%;
   background: #000;
   padding-top: 1px;
   font-family: 'Anybody', serif;
   z-index: 999999999999;
 
   position: absolute;
-  top: 100%;
+  top: 0%;
   left: 0;
 
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 313px 313px 130px;
   gap: 1px;
+
+  transition: all 0.2s ease-out;
+}
+
+.container--dropdown--visible {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+
+  top: 100%;
 }
 
 .menu-section {
