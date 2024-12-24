@@ -4,15 +4,23 @@
 
     <div class="container--breadcrumbs">
       <div class="breadcrumbs">
-        <span class="breadcrumb">Contribuisci</span>
+        <button>
+          <span class="breadcrumb">Contribuisci</span>
+        </button>
+
         <Divider vertical class="breadcrumb-divider" />
-        <span class="breadcrumb">Abbonati</span>
+
+        <button>
+          <span class="breadcrumb">Abbonati</span>
+        </button>
       </div>
 
-      <div class="accedi">
-        <i class="fa-regular fa-user" />
-        <span>Accedi</span>
-      </div>
+      <button>
+        <div class="accedi">
+          <i class="fa-regular fa-user" />
+          <span>Accedi</span>
+        </div>
+      </button>
     </div>
 
     <Divider />
@@ -25,10 +33,14 @@
       </div>
 
       <div class="menu--button">
-        <div class="menu--icon">
-          <i class="fa-solid fa-magnifying-glass" />
+        <div>
+          <button class="menu--icon">
+            <i class="fa-solid fa-magnifying-glass" />
+          </button>
         </div>
       </div>
+
+      <!-- <Menu /> -->
     </div>
 
     <Divider />
@@ -58,11 +70,13 @@
 <script>
 import Divider from './Divider.vue'
 import Label from './Label.vue'
+import Menu from './Menu.vue'
 
 export default {
   components: {
     Divider,
     Label,
+    Menu,
   },
 
   props: {
@@ -93,6 +107,7 @@ export default {
 .container--menu {
   height: 96px;
   width: 100%;
+  position: relative;
 
   display: flex;
   align-items: center;
