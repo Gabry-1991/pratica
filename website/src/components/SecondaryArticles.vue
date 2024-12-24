@@ -271,6 +271,12 @@ export default {
   width: 54%;
 }
 
+@media (max-width: 1500px) {
+  .container--article-3 {
+    background-size: cover;
+  }
+}
+
 @media (max-width: 800px) {
   .container--secondary-articles {
     height: auto;

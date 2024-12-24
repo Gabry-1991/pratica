@@ -135,8 +135,11 @@ export default {
 @media (max-width: 1030px) {
   .container--blog {
     height: calc(188px * 3);
-    grid-template-columns: repeat(2, 1fr);
     background: #000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
   }
 

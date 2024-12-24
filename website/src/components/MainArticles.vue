@@ -230,6 +230,10 @@ export default {
   .article-1 {
     height: 70%;
   }
+
+  .container--article-3 {
+    background-size: cover;
+  }
 }
 
 @media (max-width: 800px) {
