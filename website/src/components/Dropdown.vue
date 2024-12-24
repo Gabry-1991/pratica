@@ -1,5 +1,9 @@
 <template>
-  <div class="container--dropdown" :class="{ 'container--dropdown--visible': dropdownVisible }">
+  <div
+    class="container--dropdown"
+    :class="{ 'container--dropdown--visible': dropdownVisible }"
+    @click.stop
+  >
     <div v-for="section of menuSections" class="menu-section">
       <div class="container--text">
         <h3 class="title">{{ section.title }}</h3>
@@ -61,10 +65,24 @@ export default {
       ],
     }
   },
+
+  mounted() {
+    window.addEventListener('click', this.closeDropdown)
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('click', this.closeDropdown)
+  },
+
+  methods: {
+    closeDropdown() {
+      this.$emit('update:dropdown-visible', false)
+    },
+  },
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .container--dropdown {
   opacity: 0;
   pointer-events: none;
@@ -136,5 +154,50 @@ export default {
 .sub {
   font-size: 14px;
   line-height: 24px;
+}
+
+@media (max-width: 1200px) {
+  .container--dropdown {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 280px) 130px;
+  }
+
+  .menu-service {
+    &:nth-last-of-type(5),
+    &:last-of-type {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container--dropdown {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 120px) repeat(3, 80px);
+  }
+
+  .menu-service {
+    &:nth-last-of-type(5),
+    &:last-of-type {
+      display: flex;
+    }
+  }
+
+  .container--text {
+    height: auto;
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 30px;
+    line-height: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .sub {
+    font-size: 13px;
+    line-height: 18px;
+  }
 }
 </style>

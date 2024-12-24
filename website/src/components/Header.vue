@@ -26,7 +26,7 @@
     <Divider />
 
     <div class="container--menu">
-      <div class="menu--button">
+      <div class="menu--button" @click.stop>
         <button class="menu--icon" @click="toggleMenu">
           <i class="fa-solid fa-bars" />
         </button>
@@ -38,7 +38,7 @@
         </button>
       </div>
 
-      <Menu v-model:dropdown-visible="dropdownVisible" />
+      <Dropdown v-model:dropdown-visible="dropdownVisible" />
     </div>
 
     <Divider />
@@ -68,13 +68,13 @@
 <script>
 import Divider from './Divider.vue'
 import Label from './Label.vue'
-import Menu from './Menu.vue'
+import Dropdown from './Dropdown.vue'
 
 export default {
   components: {
     Divider,
     Label,
-    Menu,
+    Dropdown,
   },
 
   props: {
