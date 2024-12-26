@@ -42,9 +42,18 @@
       </Label>
     </div>
 
-    <div v-if="soundWave" class="container--soundwave" :class="{ 'soundwave-long': soundWaveLong }">
+    <div
+      v-if="soundWave"
+      class="container--soundwave"
+      :class="{ 'container--soundwave-long': soundWaveLong }"
+    >
       <i class="fa-solid fa-pause icon" />
-      <img :src="soundWave" alt="sound wave" class="soundwave" />
+      <img
+        :src="soundWave"
+        alt="sound wave"
+        class="soundwave"
+        :class="{ 'soundwave-long': soundWaveLong }"
+      />
       <span>-03:34</span>
     </div>
 
@@ -232,11 +241,16 @@ export default {
   justify-content: space-between;
 }
 
-.soundwave-long {
+.container--soundwave-long {
   width: 115%;
 }
 
 .soundwave {
+  height: 40px;
+  width: 273px;
+}
+
+.soundwave-long {
   height: 40px;
   width: 407px;
 }
@@ -302,12 +316,20 @@ export default {
 
 @media (max-width: 1350px) {
   .soundwave {
+    width: 190px;
+  }
+
+  .soundwave-long {
     width: 300px;
   }
 }
 
 @media (max-width: 1150px) {
   .soundwave {
+    width: 110px;
+  }
+
+  .soundwave-long {
     width: 180px;
   }
 }
@@ -409,7 +431,7 @@ export default {
     width: 231px;
   }
 
-  .soundwave-long {
+  .container--soundwave-long {
     width: 100%;
   }
 }

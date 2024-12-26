@@ -27,8 +27,11 @@
 
     <div class="container--menu">
       <div class="menu--button" @click.stop>
-        <button class="menu--icon" @click="toggleMenu">
+        <button v-if="!dropdownVisible" class="menu--icon" @click="toggleMenu">
           <i class="fa-solid fa-bars" />
+        </button>
+        <button v-else class="menu--icon" @click="toggleMenu">
+          <i class="fa-solid fa-xmark" />
         </button>
       </div>
 

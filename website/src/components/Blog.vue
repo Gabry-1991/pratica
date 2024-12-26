@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .container--blog {
   font-weight: 700;
   font-family: 'Anybody', serif;
@@ -102,7 +102,7 @@ export default {
   justify-content: center;
   gap: 1.75rem;
 
-  &:last-of-type {
+  &.last-blog {
     border: none;
   }
 }

@@ -72,6 +72,7 @@
     color: #000;
     background: transparent;
     padding: 0 16px;
+    border-top: none;
   }
 
   .container--symbol {

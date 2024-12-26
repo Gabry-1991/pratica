@@ -76,6 +76,10 @@ export default {
 
   methods: {
     closeDropdown() {
+      if (!this.dropdownVisible) {
+        return
+      }
+
       this.$emit('update:dropdown-visible', false)
     },
   },
